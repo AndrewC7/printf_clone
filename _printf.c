@@ -1,4 +1,17 @@
 #include "printf.h"
+
+/**
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
+}
+
 /**
  * _printf - produces output according to format
  * @format: datatype to print
@@ -18,20 +31,6 @@ int _printf(const char * const format, ...)
 		{NULL, NULL},
 	};
 
-/* char replacement array for escape characters. see below.
- chars limited to examples from task reading. */
-	char escape_c[9][] = {
-		{'a', '\a'},
-		{'b', '\b'},
-		{'f', '\f'},
-		{'n', '\n'},
-		{'r', '\r'},
-		{'t', '\t'},
-		{'v', '\v'},
-		{'%', '\%'},
-		{NULL, NULL}
-	};
-
 	va_start(args, format);
 
 /* stdio.h printf always has a string as the first arg, regardless of whether
@@ -42,9 +41,7 @@ int _printf(const char * const format, ...)
  outputs from their main, we don't measure the length in chars until the end,
  after all formatting */
 
-/* so should we start with learning how to use write, not _putchar,
- to print the fromat string? mockup of basic structure using _putchar: */
-
+/* mockup of basic structure using _putchar: */
 	for (i = 0; format && format[i]; i++)
 	{
 /* iterating though to print it char by char, we test for the % fmt tag
@@ -65,33 +62,55 @@ int _printf(const char * const format, ...)
 /* what to do with a non matching char after '%'? throw an error? we already
    have _printp for "%%" */
 		}
-/* and also test for the escape character, \. here is it necessary to do an
- array of structs, or can we just do a 2D array, given that we are just
- swapping char for char? maybe offboard it entirely to a helper function? */
 
-		if (format[i] == '\\')
-		{
-/* iterate through first column of escape_c, looking for match */
-			for (j = 0; escape_c[j][0]; j++)
-			{
-				if (format[i] == escape_c[j][0])
-				{
-/* is so, print formatted char */
-					_putchar(escape_c[j][1]);
-				}
-			}
-/* again, what to print if second char doesn't match? look to behavior of
- stock printf? */
-		}
 /* encounter neither format tag, print chars in format string.
  maybe we can measure as we print, with count += 1? this may not work with
  helper functions */
 		_putchar(format[i]);
 	}
-	_putchar('\n');
 
 	va_end(args);
 
 	return (count);
 
 }
+
+
+
+
+/* turns out escape chars are part of shell, do not need to build them into
+   printf. defualt putchar handles them.
+
+/* and also test for the escape character, \. here is it necessary to do an
+ array of structs, or can we just do a 2D array, given that we are just
+ swapping char for char? maybe offboard it entirely to a helper function?
+
+		if (format[i] == '\\')
+		{
+/* iterate through first column of escape_c, looking for match
+			for (j = 0; escape_c[j][0]; j++)
+			{
+				if (format[i] == escape_c[j][0])
+				{
+/* is so, print formatted char
+					_putchar(escape_c[j][1]);
+				}
+			}
+/* again, what to print if second char doesn't match? look to behavior of
+ stock printf?
+		}
+
+/* char replacement array for escape characters. see below.
+ chars limited to examples from task reading.
+	char escape_c[9][] = {
+		{'a', '\a'},
+		{'b', '\b'},
+		{'f', '\f'},
+		{'n', '\n'},
+		{'r', '\r'},
+		{'t', '\t'},
+		{'v', '\v'},
+		{'%', '\%'},
+		{NULL, NULL}
+	};
+*/
