@@ -81,26 +81,26 @@ int _printf(const char * const format, ...)
 /* turns out escape chars are part of shell, do not need to build them into
    printf. defualt putchar handles them.
 
-/* and also test for the escape character, \. here is it necessary to do an
+ and also test for the escape character, \. here is it necessary to do an
  array of structs, or can we just do a 2D array, given that we are just
  swapping char for char? maybe offboard it entirely to a helper function?
 
 		if (format[i] == '\\')
 		{
-/* iterate through first column of escape_c, looking for match
+ iterate through first column of escape_c, looking for match
 			for (j = 0; escape_c[j][0]; j++)
 			{
 				if (format[i] == escape_c[j][0])
 				{
-/* is so, print formatted char
+ is so, print formatted char
 					_putchar(escape_c[j][1]);
 				}
 			}
-/* again, what to print if second char doesn't match? look to behavior of
+ again, what to print if second char doesn't match? look to behavior of
  stock printf?
 		}
 
-/* char replacement array for escape characters. see below.
+ char replacement array for escape characters. see below.
  chars limited to examples from task reading.
 	char escape_c[9][] = {
 		{'a', '\a'},
