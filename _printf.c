@@ -21,6 +21,7 @@ int _printf(const char * const format, ...)
 {
 	int count = 0;
 	va_list args;
+	int i, j;
 
 	data_t type[] = {
 		{"c", _printchar},
@@ -55,8 +56,9 @@ int _printf(const char * const format, ...)
    in array 'type' */
 				if (format[i + 1] == *(type[j].type))
 				{
-/* execute function pointed to by f_ptr on the next arg in va_list */
-					type[j].f_ptr(args);
+/* execute function pointed to by f_ptr on the next arg in va_list,
+ and add the return value to count */
+					count += type[j].f_ptr(args);
 				}
 			}
 /* what to do with a non matching char after '%'? throw an error? we already
@@ -67,6 +69,7 @@ int _printf(const char * const format, ...)
  maybe we can measure as we print, with count += 1? this may not work with
  helper functions */
 		_putchar(format[i]);
+		count += 1;
 	}
 
 	va_end(args);
