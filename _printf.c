@@ -59,9 +59,11 @@ int _printf(const char * const format, ...)
 /* execute function pointed to by f_ptr on the next arg in va_list,
  and add the return value to count */
 					count += type[j].f_ptr(args);
+/* iterate past the tag once for '%', again for matched char */
+					i += 2;
 				}
 			}
-/* what to do with a non matching char after '%'? throw an error? we already
+/* what to do wtih non matching char after '%'? throw an error? we already
    have _printp for "%%" */
 		}
 

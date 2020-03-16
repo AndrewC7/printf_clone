@@ -9,7 +9,7 @@ int _printchar(va_list args)
 {
 	int count = 0;
 	_putchar(va_arg(args, int));
-	count += 1;
+	count++;
 	return (count);
 }
 
@@ -28,7 +28,7 @@ int _printstr(va_list args)
 		for (i = 0; va_arg(args, char *); i++)
 		{
 			_putchar(va_arg(args, char *)[i]);
-			count += 1;
+			count++;
 		}
 	}
 	return (count);
@@ -42,25 +42,31 @@ int _printstr(va_list args)
 int _printnum(va_list args)
 {
 	int count = 0;
+	int pow_10 = 10;
 	int n = va_arg(args, int);
+
+	if (n < 0)
+	{
+		putchar('-');
+		count++;
+		n = -n;
+	}
+
+	while (n / pow_10 > 9)
+	{
+		pow_10 *= 10;
+	}
+	putchar(n / pow_10 + '0');
+	count++;
 
 	if (n > 0)
 	{
-		_putchar('-');
-		count += 1;
-		n = -n;
-	}
-/* recursion draft:
-	if (n / 10)
-	{
-		_printnum(n / 10);
-	}
-	_putchar(n % 10); */
-	while (n % 10)
-	{
-		_putchar(n % 10);
-		count += 1;
-		n /= 10;
+		while (pow_10 > 1)
+		{
+			pow_10 /= 10;
+			putchar((n / pow_10) % 10 + '0');
+			count++;
+		}
 	}
 	return (count);
 }
@@ -75,6 +81,6 @@ int _printp(va_list args)
 	(void)args;
 
 	_putchar('%');
-	count += 1;
+	count++;
 	return (count);
 }
