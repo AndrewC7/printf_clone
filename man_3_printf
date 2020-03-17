@@ -1,0 +1,17 @@
+.TH man 3 "16 Mar 2020" "0.25" "_printf man page"
+.SH NAME
+.B _printf
+- stripped down version of the stdio.h function printf().
+.SH SYNOPSIS
+_printf [FORMAT] [ARG1] ...
+.SH DESCRIPTION
+The first group project for 1st trimester Holberton students learning C, emulates some of the basic functionality of the stock printf()
+.SH OPTIONS
+.B _printf
+does not take any options. However, you can supply the string format, and a few datatypes as additional arguments.
+.SH SEE ALSO
+.I peerlearning(2), projectbased(2), fullstack(2), Betty(1)
+.SH BUGS
+Currently printing integers after the primary string.
+.SH AUTHOR
+Samuel Pomeroy, Andrew Cox, Samuel Messenger

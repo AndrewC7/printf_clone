@@ -1,0 +1,37 @@
+_printf.c comments
+
+Line 36:
+
+/* stdio.h printf always has a string as the first arg, regardless of whether
+ or not it's just format tags or a larger printable string containing format
+ tags. */
+
+/* so if const char * const format is that string, looking at the example
+ outputs from their main, we don't measure the length in chars until the end,
+ after all formatting */
+
+Line 42:
+/* iterating though to print it char by char, we test for the % fmt tag
+ indicator: */
+
+Line 44:
+/* iterate though fmt tag members of each struct in array 'type' */
+
+Line 46:
+/* if the next char in format matches one of the type members of the structs
+   in array 'type' */
+
+Line 48:
+/* execute function pointed to by f_ptr on the next arg in va_list,
+ and add the return value to count */
+
+Line 49:
+/* iterate past the tag once for '%', again for matched char */
+
+Line 52:
+/* code currently successfully handles non-matching tag after %.
+ See "Unknown:[%r]" in main.c */
+
+End:
+/* turns out escape chars are part of shell, do not need to build them into
+   printf. defualt putchar handles them. */
