@@ -26,8 +26,6 @@ The int argument is converted to an unsigned char, and the resulting character i
 .B s: 
 *The const char * argument is expected to be a pointer to an array of character type (pointer to a string). Characters from the array are written up to (but not including) a terminating null byte ('\0')
 .SH SEE ALSO
-.I peerlearning(2), projectbased(2), fullstack(2), Betty(1)
-.SH BUGS
-Currently printing integers after the primary string.
+.I printf(3)
 .SH AUTHOR
 Samuel Pomeroy, Andrew Cox, Samuel Messenger
