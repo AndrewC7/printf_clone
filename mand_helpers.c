@@ -8,6 +8,7 @@
 int _printchar(va_list args)
 {
 	int count = 0;
+
 	_putchar(va_arg(args, int));
 	count++;
 	return (count);
@@ -22,12 +23,13 @@ int _printstr(va_list args)
 {
 	int count = 0;
 	int i;
+	char *str = va_arg(args, char *);
 
-	if (va_arg(args, char *))
+	if (str)
 	{
-		for (i = 0; va_arg(args, char *); i++)
+		for (i = 0; str[i]; i++)
 		{
-			_putchar(va_arg(args, char *)[i]);
+			_putchar(str[i]);
 			count++;
 		}
 	}
@@ -73,6 +75,7 @@ int _printnum(va_list args)
 
 /**
  * _printp - prints percent sign when called by format tag in printf
+ * @args: variable argument coming from _printf
  * Return: output length in bytes/chars
  */
 int _printp(va_list args)
