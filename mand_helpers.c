@@ -49,7 +49,7 @@ int _printnum(va_list args)
 
 	if (n < 0)
 	{
-		putchar('-');
+		_putchar('-');
 		count++;
 		n = -n;
 	}
@@ -58,7 +58,7 @@ int _printnum(va_list args)
 	{
 		pow_10 *= 10;
 	}
-	putchar(n / pow_10 + '0');
+	_putchar(n / pow_10 + '0');
 	count++;
 
 	if (n > 0)
@@ -66,7 +66,7 @@ int _printnum(va_list args)
 		while (pow_10 > 1)
 		{
 			pow_10 /= 10;
-			putchar((n / pow_10) % 10 + '0');
+			_putchar((n / pow_10) % 10 + '0');
 			count++;
 		}
 	}
