@@ -17,14 +17,16 @@ int main(void)
 /*	ui = (unsigned int)INT_MAX + 1024;
 	addr = (void *)0x7ffe637541f0; */
 	_printf("Length:[%d, %i]\n", len, len2);
-	printf("Length:[%d, %i]\n", len, len2);        putchar('\n');
+	printf("Length:[%d, %i]\n", len, len2);
+	putchar('\n');
         len = _printf("hola %");
         putchar('\n');
         len2 = printf("hola %");
         putchar('\n');
         _printf("Length:[%d, %i]\n", len, len2);
         printf("Length:[%d, %i]\n", len, len2);
-        putchar('\n');    _printf("Negative:[%d]\n", -762534);
+        putchar('\n');
+	_printf("Negative:[%d]\n", -762534);
 	printf("Negative:[%d]\n", -762534);
 /*	_printf("Unsigned:[%u]\n", ui);
 	printf("Unsigned:[%u]\n", ui);
