@@ -24,6 +24,7 @@ int _printstr(va_list args)
 	int count = 0;
 	int i;
 	char *str = va_arg(args, char *);
+	char *null_string = "(null)";
 
 	if (str)
 	{
@@ -32,6 +33,16 @@ int _printstr(va_list args)
 			_putchar(str[i]);
 			count++;
 		}
+	}
+
+	if (!str)
+	{
+		for (i = 0; null_string[i]; i++)
+		{
+			_putchar(null_string[i]);
+			count++;
+		}
+		return (count);
 	}
 	return (count);
 }
