@@ -34,11 +34,6 @@ int _printf(const char * const format, ...)
 
 	va_start(args, format);
 
-	if (format == NULL)
-		return (-1);
-	if (format[i] == '%' && format[i + 1] == ' ')
-		return (-1);
-
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%' && format[i + 1] == '\0')
