@@ -25,6 +25,10 @@ The int argument is converted to an unsigned char, and the resulting character i
 .PP 
 .B s: 
 Characters from the array are written up to (but not including) a terminating null byte ('\0')
+.SH RETURN VALUE
+Upon successful return, this function should return the number of characters printed, excluding the null byte for the output of strings.
+.SH BUGS
+No known bugs as of now
 .SH EXAMPLE
 .PP 
 .B To print a string: 
