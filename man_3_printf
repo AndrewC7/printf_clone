@@ -25,6 +25,23 @@ The int argument is converted to an unsigned char, and the resulting character i
 .PP 
 .B s: 
 Characters from the array are written up to (but not including) a terminating null byte ('\0')
+.SH EXAMPLE
+.PP 
+.B To print a string: 
+.br
+Example = "Betty"
+.br
+_printf("%s", Example)
+.br
+Output: Betty
+.br
+.B To print a signed intiger:
+.br
+Example = 123
+.br
+_printf("%i", Example)
+.br
+Output: 123
 .SH SEE ALSO
 .I printf(3)
 .SH AUTHOR
