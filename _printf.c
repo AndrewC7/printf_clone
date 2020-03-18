@@ -21,7 +21,7 @@ int _printf(const char * const format, ...)
 {
 	int count = 0;
 	va_list args;
-	int i, j;
+	int i = 0, j;
 
 	data_t type[] = {
 		{"c", _printchar},
@@ -36,13 +36,15 @@ int _printf(const char * const format, ...)
 
 	if (format == NULL)
 		return (-1);
-	if (format[0] == '%' && format[1] == '\0')
-		return (-1);
-	if (format[0] == '%' && format[1] == ' ')
+	if (format[i] == '%' && format[i + 1] == ' ')
 		return (-1);
 
 	for (i = 0; format[i]; i++)
 	{
+		if (format[i] == '%' && format[i + 1] == '\0')
+			return (-1);
+		if (format [i] == '%' && format[i + 1] == ' ')
+			return (-1);
 		if (format[i] == '%')
 		{
 			for (j = 0; type[j].type; j++)
